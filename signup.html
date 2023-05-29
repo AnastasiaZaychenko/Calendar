@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,
+                         initial-scale=1.0"
+    />
+    <title>Calendar signup</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="./dist/model.js" defer></script>
+    <script src="./dist/view.js" defer></script>
+    <script src="./dist/controller.js" defer></script>
+    <script src="./dist/helper.js" defer></script>
+  </head>
+  <body onload="populateForm()">
+    <fieldset class="fieldset2">
+      <form action="signup.html">
+        <h1>Sign Up</h1>
+        <h2>Please fill in this form to create an account.</h2>
+        <br />
+        <label for="newEmail"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" name="newEmail" required />
+        <br />
+        <br />
+        <label for="newPassword"><b>Password</b></label>
+        <input
+          type="newPassword"
+          placeholder="Enter Password"
+          name="newPassword"
+          required
+          minlength="6"
+          maxlength="20"
+        />
+        <br />
+        <br />
+        <label for="password-repeat"><b>Repeat Password</b></label>
+        <input
+          type="password"
+          placeholder="Repeat Password"
+          name="password-repeat"
+          required
+          minlength="6"
+          maxlength="20"
+        />
+        <br />
+        <br />
+        <label>
+          <input
+            type="checkbox"
+            checked="checked"
+            name="remember"
+            style="margin-bottom: 15px"
+          />
+          Remember me
+        </label>
+
+        <p>
+          By creating an account you agree to our
+          <a
+            class="terms"
+            href="https://policies.google.com/terms?hl=en-US"
+            style="color: dodgerblue"
+            >Terms and Privacy</a
+          >.
+        </p>
+        <br />
+        <div class="clearfix">
+          <button type="reset" class="clearButtotn">Cancel</button>
+          <button type="submit" class="signupButtotn">Sign Up</button>
+        </div>
+      </form>
+      <br />
+      <a href="login.html" class="button">Back to Login</a>
+      <a href="first.html" class="button">Back </a>
+    </fieldset>
+  </body>
+</html>

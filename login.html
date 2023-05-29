@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,
+                         initial-scale=1.0"
+    />
+    <title>Calendar Login</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="./dist/model.js" defer></script>
+    <script src="./dist/view.js" defer></script>
+    <script src="./dist/controller.js" defer></script>
+    <script src="./dist/helper.js" defer></script>
+  </head>
+  <body onload="populateForm()">
+    <fieldset class="fieldset1">
+      <form class="login" action="login.html">
+        <h1>Login</h1>
+        <br />
+        <label for="Email"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" name="Email" required />
+        <br />
+        <br />
+        <label for="password"><b>Password</b></label>
+        <input
+          type="password"
+          placeholder="Enter Password"
+          name="password"
+          required
+          minlength="6"
+          maxlength="20"
+        />
+        <br />
+        <br />
+        <label>
+          <input type="checkbox" checked="checked" name="remember" />
+          Remember me
+        </label>
+        <br />
+        <br />
+        <button type="submit">Login</button>
+      </form>
+      <br />
+      <a href="signup.html" class="button">signup</a>
+      <a href="first.html" class="button">Back </a>
+    </fieldset>
+  </body>
+</html>
