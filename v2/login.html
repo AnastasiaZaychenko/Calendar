@@ -2,11 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width,
-                         initial-scale=1.0"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calendar Login</title>
     <link rel="stylesheet" href="style.css" />
     <script src="./dist/model.js" defer></script>
@@ -16,7 +12,7 @@
   </head>
   <body onload="populateForm()">
     <fieldset class="fieldset1">
-      <form class="login" action="login.html">
+      <form id="loginForm" onsubmit="return saveLogin(event)">
         <h1>Login</h1>
         <br />
         <label for="Email"><b>Email</b></label>
@@ -40,11 +36,11 @@
         </label>
         <br />
         <br />
-        <button type="submit">Login</button>
+        <a href="index.html" class="button">Login</a>
       </form>
       <br />
       <a href="signup.html" class="button">signup</a>
-      <a href="first.html" class="button">Back </a>
+      <a href="first.html" class="button">Back</a>
     </fieldset>
   </body>
 </html>

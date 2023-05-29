@@ -16,7 +16,7 @@
   </head>
   <body onload="populateForm()">
     <fieldset class="fieldset2">
-      <form action="signup.html">
+      <form id="signupForm" onsubmit="return saveSignup(event)">
         <h1>Sign Up</h1>
         <h2>Please fill in this form to create an account.</h2>
         <br />
@@ -26,7 +26,7 @@
         <br />
         <label for="newPassword"><b>Password</b></label>
         <input
-          type="newPassword"
+          type="password"
           placeholder="Enter Password"
           name="newPassword"
           required
@@ -68,7 +68,7 @@
         <br />
         <div class="clearfix">
           <button type="reset" class="clearButtotn">Cancel</button>
-          <button type="submit" class="signupButtotn">Sign Up</button>
+          <a href="login.html" class="button">signup</a>
         </div>
       </form>
       <br />

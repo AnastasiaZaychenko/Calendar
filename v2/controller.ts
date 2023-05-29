@@ -2,15 +2,9 @@
 function saveSignup(event) {
   event.preventDefault();
 
-  const emailInput = document.querySelector(
-    'input[name="newEmail"]'
-  ) as HTMLInputElement;
-  const passwordInput = document.querySelector(
-    'input[name="newPassword"]'
-  ) as HTMLInputElement;
-  const repeatPasswordInput = document.querySelector(
-    'input[name="password-repeat"]'
-  ) as HTMLInputElement;
+  const emailInput = document.querySelector('input[name="newEmail"]') as HTMLInputElement;
+  const passwordInput = document.querySelector('input[name="newPassword"]') as HTMLInputElement;
+  const repeatPasswordInput = document.querySelector('input[name="password-repeat"]') as HTMLInputElement;
 
   const email = emailInput.value;
   const password = passwordInput.value;
@@ -23,21 +17,15 @@ function saveSignup(event) {
   localStorage.setItem("email", email);
   localStorage.setItem("password", password);
 
-  window.location.href = "calendar.html";
+  window.location.href = "login.html";
 }
 
 function saveLogin(event) {
   event.preventDefault();
 
-  const emailInput = document.querySelector(
-    'input[name="Email"]'
-  ) as HTMLInputElement;
-  const passwordInput = document.querySelector(
-    'input[name="password"]'
-  ) as HTMLInputElement;
-  const rememberCheckbox = document.querySelector(
-    'input[name="remember"]'
-  ) as HTMLInputElement;
+  const emailInput = document.querySelector('input[name="Email"]') as HTMLInputElement;
+  const passwordInput = document.querySelector('input[name="password"]') as HTMLInputElement;
+  const rememberCheckbox = document.querySelector('input[name="remember"]') as HTMLInputElement;
 
   const email = emailInput.value;
   const password = passwordInput.value;
@@ -51,7 +39,7 @@ function saveLogin(event) {
     localStorage.removeItem("password");
   }
 
-  window.location.href = "calendar.html";
+  window.location.href = "index.html";
 }
 
 ///////////////////////////////////
