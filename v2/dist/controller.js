@@ -33,10 +33,25 @@ function saveLogin(event) {
     window.location.href = "index.html";
 }
 ///////////////////////////////////
-function openWindow(element) {
-    var title = element.innerText;
-    var dateStr = months[currMonth] + " " + currYear + " " + title;
-    // Open a window or display a popup with the title and date
-    console.log(dateStr);
-} // Replace with your code to open
-var allDays = ;
+// Create an event object
+var event = {
+    title: eventName,
+    start: eventDate + "T" + eventTime,
+    end: eventDate + "T" + eventTime
+};
+// Add the event to the calendar
+if (window.calendar && window.calendar.createEvent) {
+    window.calendar
+        .createEvent(event)
+        .then(function (response) {
+        console.log("Event added successfully:", response);
+        alert("Event added successfully!");
+    })["catch"](function (error) {
+        console.error("Error adding event:", error);
+        alert("Error adding event. Please try again.");
+    });
+}
+else {
+    console.error("Web Calendar API not supported.");
+    alert("Web Calendar API not supported.");
+}

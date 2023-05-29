@@ -2,9 +2,15 @@
 function saveSignup(event) {
   event.preventDefault();
 
-  const emailInput = document.querySelector('input[name="newEmail"]') as HTMLInputElement;
-  const passwordInput = document.querySelector('input[name="newPassword"]') as HTMLInputElement;
-  const repeatPasswordInput = document.querySelector('input[name="password-repeat"]') as HTMLInputElement;
+  const emailInput = document.querySelector(
+    'input[name="newEmail"]'
+  ) as HTMLInputElement;
+  const passwordInput = document.querySelector(
+    'input[name="newPassword"]'
+  ) as HTMLInputElement;
+  const repeatPasswordInput = document.querySelector(
+    'input[name="password-repeat"]'
+  ) as HTMLInputElement;
 
   const email = emailInput.value;
   const password = passwordInput.value;
@@ -23,9 +29,15 @@ function saveSignup(event) {
 function saveLogin(event) {
   event.preventDefault();
 
-  const emailInput = document.querySelector('input[name="Email"]') as HTMLInputElement;
-  const passwordInput = document.querySelector('input[name="password"]') as HTMLInputElement;
-  const rememberCheckbox = document.querySelector('input[name="remember"]') as HTMLInputElement;
+  const emailInput = document.querySelector(
+    'input[name="Email"]'
+  ) as HTMLInputElement;
+  const passwordInput = document.querySelector(
+    'input[name="password"]'
+  ) as HTMLInputElement;
+  const rememberCheckbox = document.querySelector(
+    'input[name="remember"]'
+  ) as HTMLInputElement;
 
   const email = emailInput.value;
   const password = passwordInput.value;
@@ -44,11 +56,26 @@ function saveLogin(event) {
 
 ///////////////////////////////////
 
+// Create an event object
+var event = {
+  title: eventName,
+  start: eventDate + "T" + eventTime,
+  end: eventDate + "T" + eventTime,
+};
 
-function openWindow(element) {
-  const title = element.innerText;
-  const dateStr = `${months[currMonth]} ${currYear} ${title}`;
-  // Open a window or display a popup with the title and date
-  console.log(dateStr);
-} // Replace with your code to open
-const allDays = 
+// Add the event to the calendar
+if (window.calendar && window.calendar.createEvent) {
+  window.calendar
+    .createEvent(event)
+    .then(function (response) {
+      console.log("Event added successfully:", response);
+      alert("Event added successfully!");
+    })
+    .catch(function (error) {
+      console.error("Error adding event:", error);
+      alert("Error adding event. Please try again.");
+    });
+} else {
+  console.error("Web Calendar API not supported.");
+  alert("Web Calendar API not supported.");
+}
