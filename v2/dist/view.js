@@ -1,3 +1,11 @@
+var emailInput = document.querySelector('input[name="newEmail"]');
+var passwordInput = document.querySelector('input[name="newPassword"]');
+var repeatPasswordInput = document.querySelector('input[name="password-repeat"]');
+var rememberCheckbox = document.querySelector('input[name="remember"]');
+var EmailInput = document.querySelector('input[name="Email"]');
+var PasswordInput = document.querySelector('input[name="password"]');
+var RememberCheckbox = document.querySelector('input[name="remember"]');
+///////////////////////////
 var renderCalendar = function () {
     var firstDayofMonth = new Date(currYear, currMonth, 1).getDay();
     var lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate();

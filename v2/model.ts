@@ -1,3 +1,16 @@
+class user {
+  public Email: string | null;
+  public Password: string | null;
+
+  constructor(public email: string | null, public password: string | null) {
+    this.Email = email;
+    this.Password = password;
+  }
+}
+const userArray: user[] = new Array();
+
+/////////////////////////
+
 const daysTag = document.querySelector(".days") as HTMLElement;
 const currentDate = document.querySelector(".current-date") as HTMLElement;
 const prevNextIcon = document.querySelectorAll(".icons span");

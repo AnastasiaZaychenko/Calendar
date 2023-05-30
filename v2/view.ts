@@ -1,3 +1,27 @@
+const emailInput = document.querySelector(
+  'input[name="newEmail"]'
+) as HTMLInputElement;
+const passwordInput = document.querySelector(
+  'input[name="newPassword"]'
+) as HTMLInputElement;
+const repeatPasswordInput = document.querySelector(
+  'input[name="password-repeat"]'
+) as HTMLInputElement;
+const rememberCheckbox = document.querySelector(
+  'input[name="remember"]'
+) as HTMLInputElement;
+
+const EmailInput = document.querySelector(
+  'input[name="Email"]'
+) as HTMLInputElement;
+const PasswordInput = document.querySelector(
+  'input[name="password"]'
+) as HTMLInputElement;
+const RememberCheckbox = document.querySelector(
+  'input[name="remember"]'
+) as HTMLInputElement;
+
+///////////////////////////
 const renderCalendar = (): void => {
   const firstDayofMonth = new Date(currYear, currMonth, 1).getDay();
   const lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate();
