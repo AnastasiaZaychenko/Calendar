@@ -9,6 +9,7 @@
     <script src="./dist/controller.js" defer></script>
     <script src="./dist/model.js" defer></script>
     <script src="./dist/view.js" defer></script>
+    <script src="./dist/helper.js" defer></script>
     <script src="./dist/script.js" defer></script>
     <link
       rel="stylesheet"
@@ -16,20 +17,6 @@
     />
   </head>
   <body>
-    <div id="myDIV" class="header">
-      <h2>My To Do List</h2>
-      <input type="text" id="myInput" placeholder="Title..." />
-      <span onclick="newElement()" class="addBtn">Add</span>
-    </div>
-
-    <ul id="myUL">
-      <li>Homework</li>
-      <li class="checked">Meet Friends</li>
-      <li>Go for a walk</li>
-      <li>Buy fruits</li>
-      <li>Read a book</li>
-      <li>Organize room</li>
-    </ul>
     <!-- <div class="wrapper">
       <header>
         <p class="current-date"></p>
@@ -51,7 +38,7 @@
         <ul class="days"></ul>
       </div>
     </div>
-    <form id="eventForm">
+    <!-- <form id="eventForm">
       <label for="eventName">Event Name:</label>
       <input type="text" id="eventName" required /><br /><br />
 
@@ -64,5 +51,37 @@
       <button type="submit">Add Event</button>
         
     </form> -->
+    <button type="submit">Add Event</button> -->
+    <!-- </form> -->
+    <form onsubmit="handleAddEventC(event)">
+      <label for="eventName">Event Name</label>
+
+      <input type="text" name="eventName" />
+
+      <label for="category">category</label>
+
+      <select name="category">
+        <option value="shoes">Shoes</option>
+        <option value="shirts">Shirts</option>
+        <option value="dresses">Dresses</option>
+      </select>
+
+      <input type="datetime-local" name="date" />
+
+      <label for="color">color</label>
+
+      <input type="color" name="color" />
+
+      <label for="importance">importance</label>
+
+      <input type="number" name="importance" />
+
+      <input type="submit" value="Add Item" />
+    </form>
+
+    <div id="massage"></div>
+    <h3 class="event-panel-title">My Events</h3>
+
+    <div class="my-events" id="eventCRender"></div>
   </body>
 </html>
