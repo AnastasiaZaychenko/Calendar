@@ -35,3 +35,5 @@ prevNextIcon.forEach(function (icon) {
         renderCalendar();
     });
 });
+var eventCRender = document.querySelector("#eventCRender");
+console.log(eventCRender);

@@ -207,3 +207,63 @@ header .current-date {
 .days li:not(.active):hover::before {
   background: #f2f2f2;
 }
+.event-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.event-panel-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.event-panel-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.my-events {
+  margin-top: 40px;
+  padding: 0 40px;
+}
+
+.event-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.event-line h4 {
+  margin: 0;
+}
+
+.event-line span {
+  margin-left: 10px;
+  color: #878787;
+}
+
+.event-line button {
+  background-color: #dd82b3;
+  border-radius: 5px;
+  padding: 5px 10px;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+}
+
+.event-line button:hover {
+  background-color: #71a78e;
+}

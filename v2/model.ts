@@ -20,3 +20,19 @@ const months: string[] = [
   "November",
   "December",
 ];
+class EventC {
+  uid: string;
+  constructor(
+    public eventName: string,
+    public category: string,
+    public color: string,
+    public importance: number,
+    public date: Date
+  ) {
+    this.uid = uid();
+  }
+}
+
+const eventC: EventC[] = [];
+
+console.log(eventC);

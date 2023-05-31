@@ -43,3 +43,5 @@ prevNextIcon.forEach((icon) => {
     renderCalendar();
   });
 });
+const eventCRender = document.querySelector("#eventCRender") as HTMLDivElement;
+console.log(eventCRender);

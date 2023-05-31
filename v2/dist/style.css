@@ -1,5 +1,112 @@
-/* Import Google font - Poppins */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f6f6f6;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+h3 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.container {
+  width: 400px;
+  height: 500px;
+  border: none;
+  padding: 20px;
+  background: linear-gradient(to bottom, #ffffff, #cfafc5);
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.button {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #dd82b3;
+  border-radius: 5px;
+}
+
+.button:hover {
+  background-color: #71a78e;
+}
+
+h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  text-align: center;
+}
+
+h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  text-align: center;
+}
+
+p {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  text-align: center;
+}
+
+.input {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+.fieldset1 {
+  width: 300px;
+  border: none;
+  padding: 20px;
+  background: linear-gradient(to bottom, #ffffff, #cfafc5);
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fieldset2 {
+  width: 300px;
+  border: none;
+  padding: 20px;
+  background: linear-gradient(to bottom, #ffffff, #cfafc5);
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button {
+  border-radius: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 80px;
+  height: 40px;
+}
+
+/* Import Google font - Poppins */
 * {
   margin: 0;
   padding: 0;
@@ -119,4 +226,65 @@ header .current-date {
 
 .days li:not(.active):hover::before {
   background: #f2f2f2;
+}
+
+.event-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.event-panel-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.event-panel-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.my-events {
+  margin-top: 40px;
+  padding: 0 40px;
+}
+
+.event-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.event-line h4 {
+  margin: 0;
+}
+
+.event-line span {
+  margin-left: 10px;
+  color: #878787;
+}
+
+.event-line button {
+  background-color: #dd82b3;
+  border-radius: 5px;
+  padding: 5px 10px;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+}
+
+.event-line button:hover {
+  background-color: #71a78e;
 }
