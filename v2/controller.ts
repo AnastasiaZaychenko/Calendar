@@ -1,4 +1,4 @@
-/////////////////// LOGIN AND SIGNUP /////////////////////
+///////////////// LOGIN AND SIGNUP /////////////////////
 function saveSignup(event) {
   event.preventDefault();
 
@@ -7,6 +7,8 @@ function saveSignup(event) {
   const repeatPassword = repeatPasswordInput.value;
 
   if (password !== repeatPassword) {
+    alert("password not matches");
+
     return;
   }
 
@@ -23,8 +25,6 @@ function saveSignup(event) {
 
   localStorage.setItem("loggedInEmail", email);
   localStorage.setItem("loggedInPassword", password);
-  localStorage.setEventC("email", email);
-  localStorage.setEventC("password", password);
 
   window.location.href = "login.html";
 }
@@ -51,16 +51,6 @@ function saveLogin(event) {
   if (!userArrayData) {
     alert("No user data found. Please sign up first.");
     return;
-  const email = emailInput.value;
-  const password = passwordInput.value;
-  const remember = rememberCheckbox.checked;
-
-  if (remember) {
-    localStorage.setEventC("email", email);
-    localStorage.setEventC("password", password);
-  } else {
-    localStorage.removeEventC("email");
-    localStorage.removeEventC("password");
   }
 
   const storedUsers = JSON.parse(userArrayData);
@@ -87,6 +77,8 @@ function saveLogin(event) {
 }
 console.log(saveLogin);
 
+////////////////////////////
+
 function handleAddEventC(evt) {
   try {
     evt.preventDefault();
@@ -98,29 +90,29 @@ function handleAddEventC(evt) {
     eventC.push(new EventC(eventName, category, color, importance, date));
     saveToLocalStorage("data", eventC);
 
-// // Create an event object
-// var event = {
-//   title: eventName,
-//   start: eventDate + "T" + eventTime,
-//   end: eventDate + "T" + eventTime,
-// };
+    // // Create an event object
+    // var event = {
+    //   title: eventName,
+    //   start: eventDate + "T" + eventTime,
+    //   end: eventDate + "T" + eventTime,
+    // };
 
-// // Add the event to the calendar
-// if (window.calendar && window.calendar.createEvent) {
-//   window.calendar
-//     .createEvent(event)
-//     .then(function (response) {
-//       console.log("Event added successfully:", response);
-//       alert("Event added successfully!");
-//     })
-//     .catch(function (error) {
-//       console.error("Error adding event:", error);
-//       alert("Error adding event. Please try again.");
-//     });
-// } else {
-//   console.error("Web Calendar API not supported.");
-//   alert("Web Calendar API not supported.");
-// }
+    // // Add the event to the calendar
+    // if (window.calendar && window.calendar.createEvent) {
+    //   window.calendar
+    //     .createEvent(event)
+    //     .then(function (response) {
+    //       console.log("Event added successfully:", response);
+    //       alert("Event added successfully!");
+    //     })
+    //     .catch(function (error) {
+    //       console.error("Error adding event:", error);
+    //       alert("Error adding event. Please try again.");
+    //     });
+    // } else {
+    //   console.error("Web Calendar API not supported.");
+    //   alert("Web Calendar API not supported.");
+    // }
     rendereventC(eventC);
   } catch (error) {
     console.log(error);

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calendar Login</title>
+    <title>Login</title>
     <link rel="stylesheet" href="style.css" />
     <script src="./dist/model.js" defer></script>
     <script src="./dist/view.js" defer></script>
@@ -11,15 +11,16 @@
     <script src="./dist/helper.js" defer></script>
   </head>
   <body onload="populateForm()">
-    <fieldset class="fieldset1">
+    <fieldset class="fieldset2">
       <form id="loginForm" onsubmit="return saveLogin(event)">
-        <h1>Login</h1>
+        <h3>Welcome back!</h3>
+        <h4>Glad to see you</h4>
         <br />
-        <label for="Email"><b>Email</b></label>
+        <label for="Email"><b></b></label>
         <input type="text" placeholder="Enter Email" name="Email" required />
         <br />
         <br />
-        <label for="password"><b>Password</b></label>
+        <label for="password"><b></b></label>
         <input
           type="password"
           placeholder="Enter Password"
@@ -36,11 +37,13 @@
         </label>
         <br />
         <br />
-        <button type="Login" class="LoginButtotn">Login</button>
+        <button type="Login" class="button1">Login</button>
       </form>
       <br />
-      <a href="signup.html" class="button">signup</a>
-      <a href="first.html" class="button">Back</a>
+      <div class="button-container">
+        <a href="signup.html" class="button2">signup</a>
+        <a href="first.html" class="button2">Back</a>
+      </div>
     </fieldset>
   </body>
 </html>
