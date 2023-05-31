@@ -7,6 +7,13 @@ var user = /** @class */ (function () {
     }
     return user;
 }());
+var User = /** @class */ (function () {
+    function User(email, password) {
+        this.email = email;
+        this.password = password;
+    }
+    return User;
+}());
 var userArray = new Array();
 /////////////////////////
 var daysTag = document.querySelector(".days");

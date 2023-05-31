@@ -7,6 +7,11 @@ class user {
     this.Password = password;
   }
 }
+
+class User {
+  constructor(public email: string | null, public password: string | null) {}
+}
+
 const userArray: user[] = new Array();
 
 /////////////////////////

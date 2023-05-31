@@ -10,7 +10,7 @@ function saveSignup(event) {
     return;
   }
 
-  const existingUser = userArray.find((user) => user.Email === email);
+  const existingUser = userArray.find((user) => user.email === email);
   if (existingUser) {
     alert("User already exists. Please log in instead.");
     return;
@@ -21,46 +21,10 @@ function saveSignup(event) {
 
   localStorage.setItem("userArray", JSON.stringify(userArray));
 
+  localStorage.setItem("loggedInEmail", email);
+  localStorage.setItem("loggedInPassword", password);
+
   window.location.href = "login.html";
-}
-function saveLogin(event) {
-  event.preventDefault();
-
-  const Email = emailInput.value;
-  const Password = passwordInput.value;
-  const Remember = rememberCheckbox.checked;
-  const currentUser = userArray.find((u) => u.Email == Email);
-  if (currentUser == null) {
-    alert("Error! make sure to fill Email and password");
-  }
-  if (!currentUser) {
-    alert("Error! wrong Email or password");
-  } else {
-    window.location.href = "index.html";
-  }
-  const savedUserData = localStorage.getItem("userData");
-
-  if (savedUserData) {
-    const userData = JSON.parse(savedUserData);
-    const savedEmail = userData.email;
-    const savedPassword = userData.password;
-
-    if (Email === savedEmail && Password === savedPassword) {
-      if (Remember) {
-        localStorage.setItem("email", Email);
-        localStorage.setItem("password", Password);
-      } else {
-        localStorage.removeItem("email");
-        localStorage.removeItem("password");
-      }
-
-      window.location.href = "index.html";
-    } else {
-      alert("Invalid email or password");
-    }
-  } else {
-    alert("No user data found. Please sign up first.");
-  }
 }
 
 function populateForm() {
@@ -73,63 +37,45 @@ function populateForm() {
     RememberCheckbox.checked = true;
   }
 }
-///////////////////////////////////
 
-const myList = document.getElementsByTagName("LI");
-let i;
-for (i = 0; i < myList.length; i++) {
-  const span = document.createElement("SPAN");
-  const txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  myList[i].appendChild(span);
-}
+function saveLogin(event) {
+  event.preventDefault();
 
-const close = document.getElementsByClassName("close");
-let i;
-for (i = 0; i < close.length; i++) {
-  close[i].onclick = function () {
-    const div = this.parentElement;
-    div.style.display = "none";
-  };
-}
+  const Email = EmailInput.value;
+  const Password = PasswordInput.value;
+  const Remember = RememberCheckbox.checked;
 
-const list = document.querySelector("ul");
-list.addEventListener(
-  "click",
-  function (ev) {
-    if (ev.target.tagName === "LI") {
-      ev.target.classList.toggle("checked");
+  const userArrayData = localStorage.getItem("userArray");
+  if (!userArrayData) {
+    alert("No user data found. Please sign up first.");
+    return;
+  }
+
+  const storedUsers = JSON.parse(userArrayData);
+  const currentUser = storedUsers.find((user) => user.email === Email);
+
+  if (!currentUser) {
+    alert("Invalid email or password");
+    return;
+  }
+
+  if (currentUser.password === Password) {
+    if (Remember) {
+      localStorage.setItem("loggedInEmail", Email);
+      localStorage.setItem("loggedInPassword", Password);
+    } else {
+      localStorage.removeItem("loggedInEmail");
+      localStorage.removeItem("loggedInPassword");
     }
-  },
-  false
-);
 
-function newElement() {
-  var li = document.createElement("li");
-  var inputValue = document.getElementById("myInput").value;
-  var t = document.createTextNode(inputValue);
-  li.appendChild(t);
-  if (inputValue === "") {
-    alert("You must write something!");
+    window.location.href = "index.html";
   } else {
-    document.getElementById("myUL").appendChild(li);
-  }
-  document.getElementById("myInput").value = "";
-
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  li.appendChild(span);
-
-  for (i = 0; i < close.length; i++) {
-    close[i].onclick = function () {
-      var div = this.parentElement;
-      div.style.display = "none";
-    };
+    alert("Invalid email or password");
   }
 }
+console.log(saveLogin);
+
+///////////////////////////////////
 
 // // Create an event object
 // var event = {
