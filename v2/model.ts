@@ -54,7 +54,8 @@ class EventC {
     public category: string,
     public color: string,
     public importance: number,
-    public date: Date
+    public date: Date,
+    public description: string
   ) {
     this.uid = uid();
   }

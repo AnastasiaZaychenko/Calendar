@@ -6,12 +6,13 @@
 }
 
 body {
-  background: linear-gradient(to bottom, #ffffff, #b6ddcd);
+  background: linear-gradient(to bottom, #e6bef8, #ad53d6);
   font-family: Arial, sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: auto;
+  margin: 50px;
 }
 
 h1 {
@@ -38,7 +39,7 @@ img {
   border-width: 1px;
   padding: 20px;
   background: #ffffff;
-  border-radius: 10px;
+  border-radius: 30px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
   display: flex;
@@ -54,7 +55,7 @@ img {
   text-decoration: none;
   color: #ffffff;
   background-color: #616161;
-  border-radius: 5px;
+  border-radius: 25px;
   width: 200px;
   height: 40px;
   border: none;
@@ -70,11 +71,11 @@ img {
 
 .fieldset1 {
   width: 350px;
-  height: 650px;
+  height: 670px;
   border-width: 1px;
   padding: 20px;
   background: #ffffff;
-  border-radius: 10px;
+  border-radius: 30px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
   display: flex;
@@ -90,9 +91,12 @@ img {
     border: 1px solid #616161;
     font-size: 18px;
     color: #616161;
-    border-radius: 5px;
+    border-radius: 25px;
     width: 300px;
     height: 30px;
+    text-align: center;
+    display: flex;
+    align-items: center;
   }
   label {
     width: 15px;
@@ -114,11 +118,11 @@ h4 {
 }
 .fieldset2 {
   width: 350px;
-  height: 500px;
+  height: 550px;
   border-width: 1px;
   padding: 20px;
   background: #ffffff;
-  border-radius: 10px;
+  border-radius: 30px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
   display: flex;
@@ -131,9 +135,12 @@ h4 {
     border: 1px solid #616161;
     font-size: 18px;
     color: #616161;
-    border-radius: 5px;
+    border-radius: 25px;
     width: 300px;
     height: 30px;
+    text-align: center;
+    display: flex;
+    align-items: center;
   }
   label {
     width: 15px;
@@ -170,7 +177,74 @@ p {
   font-size: 12px;
   color: #616161;
 }
-
+.event {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.event__add {
+  background-color: #fafafa;
+  height: 450px;
+  width: 600px;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .event__add__info {
+    margin: 5px;
+    margin-bottom: 10px;
+    .event__add__info--titel {
+      margin-top: 50px;
+    }
+  }
+  .event__add__form {
+    display: flex;
+  }
+  .box__left {
+    margin-right: 80px;
+  }
+  label {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    width: 150px;
+    height: 30px;
+    margin-left: 10px;
+  }
+  input {
+    font-family: Arial, Helvetica, sans-serif;
+    border-width: 2px;
+    background-color: #fafafa;
+    border: 1px solid #616161;
+    font-size: 18px;
+    color: #616161;
+    border-radius: 25px;
+    width: 150px;
+    height: 30px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+  }
+  .description {
+    width: 250px;
+    height: 300px;
+  }
+}
+.event__panel {
+  background-color: #fafafa;
+  width: 1000px;
+  height: auto;
+  margin: 40px;
+  border-radius: 25px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  .event__panel__title {
+    margin: 45px;
+  }
+}
 // /* Import Google font - Poppins */
 // @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 // * {

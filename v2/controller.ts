@@ -89,32 +89,12 @@ function handleAddEventC(evt) {
     const category = evt.target.elements.category.value;
     const importance = evt.target.elements.importance.value;
     const date = evt.target.elements.date.value;
-    eventC.push(new EventC(eventName, category, color, importance, date));
+    const description = evt.target.elements.description.value;
+    eventC.push(
+      new EventC(eventName, category, color, importance, date, description)
+    );
     saveToLocalStorage("data", eventC);
 
-    // // Create an event object
-    // var event = {
-    //   title: eventName,
-    //   start: eventDate + "T" + eventTime,
-    //   end: eventDate + "T" + eventTime,
-    // };
-
-    // // Add the event to the calendar
-    // if (window.calendar && window.calendar.createEvent) {
-    //   window.calendar
-    //     .createEvent(event)
-    //     .then(function (response) {
-    //       console.log("Event added successfully:", response);
-    //       alert("Event added successfully!");
-    //     })
-    //     .catch(function (error) {
-    //       console.error("Error adding event:", error);
-    //       alert("Error adding event. Please try again.");
-    //     });
-    // } else {
-    //   console.error("Web Calendar API not supported.");
-    //   alert("Web Calendar API not supported.");
-    // }
     rendereventC(eventC);
   } catch (error) {
     console.log(error);
@@ -125,11 +105,11 @@ function rendereventC(eventC: EventC[]): string {
   try {
     if (!eventC || !Array.isArray(eventC))
       throw new Error("EventC is not an array");
-
+    const eventCRender = document.querySelector(`.event__panel__event`);
     const html: string = eventC
       .map((eventC) => {
         return `
-        <div class="eventC" style="background-color:${eventC.color}">
+        <div class="event__panel__event" style="background-color:${eventC.color}">
           <h3> ${eventC.eventName}</h3> <div> category : ${eventC.category} </div>
           <div>  </div>
           <div> quantity : ${eventC.importance} </div>
@@ -139,8 +119,7 @@ function rendereventC(eventC: EventC[]): string {
         `;
       })
       .join(" ");
-    //  renderToScreen()
-    // return html;
+
     eventCRender.innerHTML = html;
   } catch (error) {
     console.log(error);
@@ -148,8 +127,6 @@ function rendereventC(eventC: EventC[]): string {
   }
 }
 
-// [[uid],[],[].[] ...]
-//------------------HandleDeleteEventC('${EventC.uid}')
 function HandleDeleteEventC(uid: string) {
   try {
     console.log("uid : ", uid);
@@ -159,7 +136,6 @@ function HandleDeleteEventC(uid: string) {
     console.log(`index : `, index);
     eventC.splice(index, 1);
 
-    // renderToScreen();
     rendereventC(eventC);
   } catch (error) {}
 }
@@ -168,7 +144,7 @@ function renderToScreen() {
   if (!eventCRender) throw new Error("eventCRender not found");
   eventCRender.innerHTML = rendereventC(eventC);
 }
-//----------------
+
 function handleViewPassword() {
   try {
     const passwordElement: any = document.querySelector("#pass");
@@ -182,7 +158,6 @@ function handleViewPassword() {
     console.error(error);
   }
 }
-//-----------save to localstoarge
 
 function saveToLocalStorage(key, eventC: EventC[]) {
   try {
