@@ -103,15 +103,15 @@ function rendereventC(eventC: EventC[]): string {
   try {
     if (!eventC || !Array.isArray(eventC))
       throw new Error("EventC is not an array");
-    const eventCRender = document.querySelector(`.event__panel__event`);
+    const eventCRender = document.querySelector(`.event__panel__events`);
     const html: string = eventC
       .map((eventC) => {
         return `
         <div class="event__panel__event" style="background-color:${eventC.color}">
           <h3> ${eventC.eventName}</h3> <div> category : ${eventC.category} </div>
-          <div>  </div>
-          <div> quantity : ${eventC.importance} </div>
           <div> date : ${eventC.date} </div>
+          <div> importance : ${eventC.importance} </div>
+          <div> description : ${eventC.description} </div>
           <button onclick="HandleDeleteEventC('${eventC.uid}')">Remove</button>
         </div>
         `;

@@ -69,16 +69,16 @@
               </div>
               <div class="event__add__info">
                 <select name="category">
-                  <option value="shoes">personal</option>
-                  <option value="shirts">family</option>
-                  <option value="dresses">work</option>
+                  <option value="personal">personal</option>
+                  <option value="family">family</option>
+                  <option value="work">work</option>
                 </select>
               </div>
+
+              <div class="event__add__info--titel">
+                <label for="datetime-local">Date</label>
+              </div>
               <div class="event__add__info">
-                <div class="event__add__info--titel">
-                  <label for="datetime-local">Date</label>
-                </div>
-                <div class="event__add__info"></div>
                 <input type="datetime-local" name="date" />
               </div>
               <div class="event__add__info--titel">
@@ -87,14 +87,14 @@
               <div class="event__add__info">
                 <input type="color" name="color" />
               </div>
-              <div class="event__add__info">
+            </div>
+            <div class="box__right">
+              <div class="event__add__info--titel">
                 <label for="importance--titel">importance</label>
               </div>
               <div class="event__add__info">
                 <input type="number" name="importance" />
               </div>
-            </div>
-            <div class="box__right">
               <div class="event__add__info--titel">
                 <label for="description">Description</label>
               </div>
@@ -112,8 +112,13 @@
         <div class="my-events" id="eventCRender"></div>
       </div>
       <div class="event__panel">
-        <h3 class="event__panel__title">My Events</h3>
-        <div class="event__panel__event"></div>
+        <div class="wapper">
+          <div class="wapper2">
+            <h3 class="event__panel__title">My Events</h3>
+          </div>
+
+          <div class="event__panel__events"></div>
+        </div>
       </div>
     </div>
   </body>

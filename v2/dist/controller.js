@@ -84,10 +84,10 @@ function rendereventC(eventC) {
     try {
         if (!eventC || !Array.isArray(eventC))
             throw new Error("EventC is not an array");
-        var eventCRender = document.querySelector(".event__panel__event");
+        var eventCRender = document.querySelector(".event__panel__events");
         var html = eventC
             .map(function (eventC) {
-            return "\n        <div class=\"event__panel__event\" style=\"background-color:" + eventC.color + "\">\n          <h3> " + eventC.eventName + "</h3> <div> category : " + eventC.category + " </div>\n          <div>  </div>\n          <div> quantity : " + eventC.importance + " </div>\n          <div> date : " + eventC.date + " </div>\n          <button onclick=\"HandleDeleteEventC('" + eventC.uid + "')\">Remove</button>\n        </div>\n        ";
+            return "\n        <div class=\"event__panel__event\" style=\"background-color:" + eventC.color + "\">\n          <h3> " + eventC.eventName + "</h3> <div> category : " + eventC.category + " </div>\n          <div> date : " + eventC.date + " </div>\n          <div> importance : " + eventC.importance + " </div>\n          <div> description : " + eventC.description + " </div>\n          <button onclick=\"HandleDeleteEventC('" + eventC.uid + "')\">Remove</button>\n        </div>\n        ";
         })
             .join(" ");
         eventCRender.innerHTML = html;

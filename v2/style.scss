@@ -185,7 +185,7 @@ p {
 }
 .event__add {
   background-color: #fafafa;
-  height: 450px;
+  height: 400px;
   width: 600px;
   border-radius: 25px;
   display: flex;
@@ -215,7 +215,6 @@ p {
     margin-left: 10px;
   }
   input {
-    font-family: Arial, Helvetica, sans-serif;
     border-width: 2px;
     background-color: #fafafa;
     border: 1px solid #616161;
@@ -230,7 +229,7 @@ p {
   }
   .description {
     width: 250px;
-    height: 300px;
+    height: 150px;
   }
 }
 .event__panel {
@@ -243,9 +242,26 @@ p {
   display: flex;
   justify-content: center;
   .event__panel__title {
-    margin: 45px;
+    margin: 45px 45px 30px 45px;
   }
 }
+.event__panel__event {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 900px;
+  height: auto;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  border-radius: 25px;
+  margin: 15px;
+}
+.wapper2 {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
 // /* Import Google font - Poppins */
 // @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 // * {
