@@ -87,8 +87,7 @@ function handleAddEventC(evt) {
     const importance = evt.target.elements.importance.value;
     const date = evt.target.elements.date.value;
     const description = evt.target.elements.description.value;
-    const Email = JSON.parse(loggedInEmail);
-    const Password = JSON.parse(loggedInPassword);
+
     eventC.push(
       new EventC(eventName, category, color, importance, date, description)
     );
@@ -100,11 +99,13 @@ function handleAddEventC(evt) {
   }
 }
 
-function rendereventC(eventC: EventC[]): string {
+function rendereventC(eventC: EventC[]): void {
   try {
     if (!eventC || !Array.isArray(eventC))
       throw new Error("EventC is not an array");
     const eventCRender = document.querySelector(`.event__panel__events`);
+    if (!eventCRender) throw new Error("eventCRender not found");
+
     const html: string = eventC
       .map((eventC) => {
         return `
@@ -122,7 +123,6 @@ function rendereventC(eventC: EventC[]): string {
     eventCRender.innerHTML = html;
   } catch (error) {
     console.log(error);
-    return "";
   }
 }
 
@@ -135,28 +135,10 @@ function HandleDeleteEventC(uid: string) {
     console.log(`index : `, index);
     eventC.splice(index, 1);
 
+    saveToLocalStorage("data", eventC);
     rendereventC(eventC);
   } catch (error) {}
 }
-
-function renderToScreen() {
-  if (!eventCRender) throw new Error("eventCRender not found");
-  eventCRender.innerHTML = rendereventC(eventC);
-}
-
-// function handleViewPassword() {
-//   try {
-//     const passwordElement: any = document.querySelector("#pass");
-//     console.dir(passwordElement);
-//     if (passwordElement.type === "password") {
-//       passwordElement.type = "text";
-//     } else {
-//       passwordElement.type = "password";
-//     }
-//   } catch (error) {
-//     console.error(error);
-//   }
-// }
 
 function saveToLocalStorage(key, eventC) {
   try {
@@ -169,26 +151,90 @@ function saveToLocalStorage(key, eventC) {
   }
 }
 
-function geteventCFromLocalStorage(key) {
+function geteventCFromLocalStorage(key: string): EventC[] {
   const data = localStorage.getItem(key);
   if (!data) throw new Error("No data found in localStorage for the key");
   const _eventC = JSON.parse(data);
   return _eventC;
 }
+
+function renderToScreen() {
+  const eventData = geteventCFromLocalStorage("data");
+  eventC = eventData ? eventData : [];
+
+  rendereventC(eventC);
+}
+
+function handleLogin(event) {
+  event.preventDefault();
+
+  const username = getloggedInEmailFromLocalStorage(loggedInEmail);
+  const password = getloggedInPasswordFromLocalStorage(loggedInPassword);
+  const isValidCredentials = validateCredentials(username, password);
+
+  if (isValidCredentials) {
+    localStorage.setItem("loggedInUser", username);
+    renderLoggedInUserEvents();
+  } else {
+    console.log("Invalid credentials");
+  }
+}
+
+function renderLoggedInUserEvents() {
+  const loggedInUser = localStorage.getItem("loggedInUser");
+
+  const loggedInUserEvents = eventC.filter(
+    (event) => event.username === loggedInUser
+  );
+  rendereventC(loggedInUserEvents);
+}
+
+function showExistingEvents() {
+  const loggedInUser = localStorage.getItem("loggedInUser");
+
+  const loggedInUserEvents = eventC.filter(
+    (event) => event.username === loggedInUser
+  );
+
+  const displayedEvents = document.querySelectorAll(".event__panel__event");
+  const displayedEventIds = Array.from(displayedEvents).map((event) =>
+    event.getAttribute("data-event-id")
+  );
+
+  const newEvents = loggedInUserEvents.filter(
+    (event) => !displayedEventIds.includes(event.uid)
+  );
+
+  rendereventC(newEvents);
+}
+
 window.addEventListener("beforeunload", () => {
   saveToLocalStorage("data", eventC);
 });
 
 window.addEventListener("load", () => {
-  eventC = geteventCFromLocalStorage("data");
   renderToScreen();
 });
+function getloggedInEmailFromLocalStorage(key: string) {
+  const loggedInEmail = localStorage.getItem(loggedInEmail);
+  if (!loggedInEmail)
+    throw new Error("No data found in localStorage for the key");
+  const _loggedInEmail = JSON.parse(loggedInEmail);
+  return _loggedInEmail;
+}
+function getloggedInPasswordFromLocalStorage(key: string) {
+  const loggedInPassword = localStorage.getItem(loggedInPassword);
+  if (!loggedInPassword)
+    throw new Error("No data found in localStorage for the key");
+  const _loggedInPassword = JSON.parse(loggedInPassword);
+  return _loggedInPassword;
+}
 
 function handleLogin(event) {
   event.preventDefault();
 
-  const username = event.target.elements.username.value;
-  const password = event.target.elements.password.value;
+  const username = getloggedInEmailFromLocalStorage(loggedInEmail);
+  const password = getloggedInPasswordFromLocalStorage(loggedInPassword);
   const isValidCredentials = validateCredentials(username, password);
 
   if (isValidCredentials) {
