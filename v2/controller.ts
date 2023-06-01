@@ -88,6 +88,8 @@ function handleAddEventC(evt) {
     const importance = evt.target.elements.importance.value;
     const date = evt.target.elements.date.value;
     const description = evt.target.elements.description.value;
+    const Email = JSON.parse(loggedInEmail);
+    const Password = JSON.parse(loggedInPassword);
     eventC.push(
       new EventC(eventName, category, color, importance, date, description)
     );
@@ -143,34 +145,75 @@ function renderToScreen() {
   eventCRender.innerHTML = rendereventC(eventC);
 }
 
-function handleViewPassword() {
-  try {
-    const passwordElement: any = document.querySelector("#pass");
-    console.dir(passwordElement);
-    if (passwordElement.type === "password") {
-      passwordElement.type = "text";
-    } else {
-      passwordElement.type = "password";
-    }
-  } catch (error) {
-    console.error(error);
-  }
-}
+// function handleViewPassword() {
+//   try {
+//     const passwordElement: any = document.querySelector("#pass");
+//     console.dir(passwordElement);
+//     if (passwordElement.type === "password") {
+//       passwordElement.type = "text";
+//     } else {
+//       passwordElement.type = "password";
+//     }
+//   } catch (error) {
+//     console.error(error);
+//   }
+// }
 
-function saveToLocalStorage(key, eventC: EventC[]) {
+function saveToLocalStorage(key, eventC) {
   try {
     if (!eventC) {
-      throw new Error("event i not valid");
+      throw new Error("EventC is not valid");
     }
-    localStorage.setEventC(key, JSON.stringify(eventC));
+    localStorage.setItem(key, JSON.stringify(eventC));
   } catch (error) {
     console.log(error);
   }
 }
 
-function geteventCFromLocalStorage(key: string): EventC[] | undefined {
-  const data = localStorage.getEventC(key);
-  if (!data) throw new Error("bad data");
+function geteventCFromLocalStorage(key) {
+  const data = localStorage.getItem(key);
+  if (!data) throw new Error("No data found in localStorage for the key");
   const _eventC = JSON.parse(data);
   return _eventC;
+}
+window.addEventListener("beforeunload", () => {
+  saveToLocalStorage("data", eventC);
+});
+
+window.addEventListener("load", () => {
+  eventC = geteventCFromLocalStorage("data");
+  renderToScreen();
+});
+
+function handleLogin(event) {
+  event.preventDefault();
+
+  const username = event.target.elements.username.value;
+  const password = event.target.elements.password.value;
+  const isValidCredentials = validateCredentials(username, password);
+
+  if (isValidCredentials) {
+    localStorage.setItem("loggedInUser", username);
+    renderLoggedInUserEvents();
+  } else {
+    console.log("Invalid credentials");
+  }
+}
+
+function renderLoggedInUserEvents() {
+  const loggedInUser = localStorage.getItem("loggedInUser");
+
+  const loggedInUserEvents = eventC.filter(
+    (event) => event.username === loggedInUser
+  );
+  rendereventC(loggedInUserEvents);
+}
+function showExistingEvents() {
+  const loggedInUser = localStorage.getItem("loggedInUser");
+
+  const loggedInUserEvents = eventC.filter(
+    (event) => event.username === loggedInUser
+  );
+
+  rendereventC(loggedInUserEvents);
 }

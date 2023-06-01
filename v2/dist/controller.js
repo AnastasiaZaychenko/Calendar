@@ -72,6 +72,8 @@ function handleAddEventC(evt) {
         var importance = evt.target.elements.importance.value;
         var date = evt.target.elements.date.value;
         var description = evt.target.elements.description.value;
+        var Email = JSON.parse(loggedInEmail);
+        var Password = JSON.parse(loggedInPassword);
         eventC.push(new EventC(eventName, category, color, importance, date, description));
         saveToLocalStorage("data", eventC);
         rendereventC(eventC);
@@ -114,36 +116,64 @@ function renderToScreen() {
         throw new Error("eventCRender not found");
     eventCRender.innerHTML = rendereventC(eventC);
 }
-function handleViewPassword() {
-    try {
-        var passwordElement = document.querySelector("#pass");
-        console.dir(passwordElement);
-        if (passwordElement.type === "password") {
-            passwordElement.type = "text";
-        }
-        else {
-            passwordElement.type = "password";
-        }
-    }
-    catch (error) {
-        console.error(error);
-    }
-}
+// function handleViewPassword() {
+//   try {
+//     const passwordElement: any = document.querySelector("#pass");
+//     console.dir(passwordElement);
+//     if (passwordElement.type === "password") {
+//       passwordElement.type = "text";
+//     } else {
+//       passwordElement.type = "password";
+//     }
+//   } catch (error) {
+//     console.error(error);
+//   }
+// }
 function saveToLocalStorage(key, eventC) {
     try {
         if (!eventC) {
-            throw new Error("event i not valid");
+            throw new Error("EventC is not valid");
         }
-        localStorage.setEventC(key, JSON.stringify(eventC));
+        localStorage.setItem(key, JSON.stringify(eventC));
     }
     catch (error) {
         console.log(error);
     }
 }
 function geteventCFromLocalStorage(key) {
-    var data = localStorage.getEventC(key);
+    var data = localStorage.getItem(key);
     if (!data)
-        throw new Error("bad data");
+        throw new Error("No data found in localStorage for the key");
     var _eventC = JSON.parse(data);
     return _eventC;
+}
+window.addEventListener("beforeunload", function () {
+    saveToLocalStorage("data", eventC);
+});
+window.addEventListener("load", function () {
+    eventC = geteventCFromLocalStorage("data");
+    renderToScreen();
+});
+function handleLogin(event) {
+    event.preventDefault();
+    var username = event.target.elements.username.value;
+    var password = event.target.elements.password.value;
+    var isValidCredentials = validateCredentials(username, password);
+    if (isValidCredentials) {
+        localStorage.setItem("loggedInUser", username);
+        renderLoggedInUserEvents();
+    }
+    else {
+        console.log("Invalid credentials");
+    }
+}
+function renderLoggedInUserEvents() {
+    var loggedInUser = localStorage.getItem("loggedInUser");
+    var loggedInUserEvents = eventC.filter(function (event) { return event.username === loggedInUser; });
+    rendereventC(loggedInUserEvents);
+}
+function showExistingEvents() {
+    var loggedInUser = localStorage.getItem("loggedInUser");
+    var loggedInUserEvents = eventC.filter(function (event) { return event.username === loggedInUser; });
+    rendereventC(loggedInUserEvents);
 }
