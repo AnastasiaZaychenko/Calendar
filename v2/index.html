@@ -16,7 +16,7 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
   </head>
-  <body>
+  <body class="todo">
     <!-- <div class="wrapper">
       <header>
         <p class="current-date"></p>
@@ -38,7 +38,7 @@
         <ul class="days"></ul>
       </div>
     </div>
-    <!-- <form id="eventForm">
+    <form id="eventForm">
       <label for="eventName">Event Name:</label>
       <input type="text" id="eventName" required /><br /><br />
 
@@ -51,37 +51,70 @@
       <button type="submit">Add Event</button>
         
     </form> -->
-    <button type="submit">Add Event</button> -->
+
     <!-- </form> -->
-    <form onsubmit="handleAddEventC(event)">
-      <label for="eventName">Event Name</label>
+    <div class="index">
+      <div class="event">
+        <div class="event__add">
+          <form class="event__add__form" onsubmit="handleAddEventC(event)">
+            <div class="box__left">
+              <div class="event__add__info--titel">
+                <label for="eventName">Event Name</label>
+              </div>
+              <div class="event__add__info">
+                <input type="text" name="eventName" />
+              </div>
+              <div class="event__add__info--titel">
+                <label for="category">category</label>
+              </div>
+              <div class="event__add__info">
+                <select name="category">
+                  <option value="shoes">personal</option>
+                  <option value="shirts">family</option>
+                  <option value="dresses">work</option>
+                </select>
+              </div>
+              <div class="event__add__info">
+                <div class="event__add__info--titel">
+                  <label for="datetime-local">Date</label>
+                </div>
+                <div class="event__add__info"></div>
+                <input type="datetime-local" name="date" />
+              </div>
+              <div class="event__add__info--titel">
+                <label for="color">Background color</label>
+              </div>
+              <div class="event__add__info">
+                <input type="color" name="color" />
+              </div>
+              <div class="event__add__info">
+                <label for="importance--titel">importance</label>
+              </div>
+              <div class="event__add__info">
+                <input type="number" name="importance" />
+              </div>
+            </div>
+            <div class="box__right">
+              <div class="event__add__info--titel">
+                <label for="description">Description</label>
+              </div>
+              <div class="event__add__info">
+                <input class="description" type="text" name="description" />
+              </div>
+              <div class="event__add__info">
+                <button type="submit">Add Event</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div id="massage"></div>
 
-      <input type="text" name="eventName" />
-
-      <label for="category">category</label>
-
-      <select name="category">
-        <option value="shoes">Shoes</option>
-        <option value="shirts">Shirts</option>
-        <option value="dresses">Dresses</option>
-      </select>
-
-      <input type="datetime-local" name="date" />
-
-      <label for="color">color</label>
-
-      <input type="color" name="color" />
-
-      <label for="importance">importance</label>
-
-      <input type="number" name="importance" />
-
-      <input type="submit" value="Add Item" />
-    </form>
-
-    <div id="massage"></div>
-    <h3 class="event-panel-title">My Events</h3>
-
-    <div class="my-events" id="eventCRender"></div>
+        <div class="my-events" id="eventCRender"></div>
+      </div>
+      <div class="event__panel">
+        <h3 class="event__panel__title">My Events</h3>
+        <div class="event__panel__event"></div>
+      </div>
+    </div>
   </body>
 </html>

@@ -37,12 +37,13 @@ var months = [
     "December",
 ];
 var EventC = /** @class */ (function () {
-    function EventC(eventName, category, color, importance, date) {
+    function EventC(eventName, category, color, importance, date, description) {
         this.eventName = eventName;
         this.category = category;
         this.color = color;
         this.importance = importance;
         this.date = date;
+        this.description = description;
         this.uid = uid();
     }
     return EventC;
