@@ -33,7 +33,6 @@ function populateForm() {
   const loggedInPassword = localStorage.getItem("loggedInPassword");
 
   if (loggedInEmail && loggedInPassword) {
-    UserNameInput.value = loggedInUserName;
     EmailInput.value = loggedInEmail;
     PasswordInput.value = loggedInPassword;
     RememberCheckbox.checked = true;
