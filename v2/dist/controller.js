@@ -1,7 +1,6 @@
 ///////////////// LOGIN AND SIGNUP /////////////////////
 function saveSignup(event) {
     event.preventDefault();
-    var userName = userNameInput.value;
     var email = emailInput.value;
     var password = passwordInput.value;
     var repeatPassword = repeatPasswordInput.value;
@@ -17,7 +16,6 @@ function saveSignup(event) {
     var newUser = new user(email, password);
     userArray.push(newUser);
     localStorage.setItem("userArray", JSON.stringify(userArray));
-    localStorage.setItem("loggedInUserName", userName);
     localStorage.setItem("loggedInEmail", email);
     localStorage.setItem("loggedInPassword", password);
     window.location.href = "login.html";

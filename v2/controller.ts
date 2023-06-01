@@ -2,7 +2,6 @@
 function saveSignup(event) {
   event.preventDefault();
 
-  const userName = userNameInput.value;
   const email = emailInput.value;
   const password = passwordInput.value;
   const repeatPassword = repeatPasswordInput.value;
@@ -23,7 +22,6 @@ function saveSignup(event) {
   userArray.push(newUser);
 
   localStorage.setItem("userArray", JSON.stringify(userArray));
-  localStorage.setItem("loggedInUserName", userName);
   localStorage.setItem("loggedInEmail", email);
   localStorage.setItem("loggedInPassword", password);
 

@@ -1,24 +1,15 @@
 class user {
-  public UserName: string | null;
   public Email: string | null;
   public Password: string | null;
 
-  constructor(
-    public userName,
-    public email: string | null,
-    public password: string | null
-  ) {
+  constructor(public email: string | null, public password: string | null) {
     this.Email = email;
     this.Password = password;
   }
 }
 
 class User {
-  constructor(
-    public userName,
-    public email: string | null,
-    public password: string | null
-  ) {}
+  constructor(public email: string | null, public password: string | null) {}
 }
 
 const userArray: user[] = new Array();

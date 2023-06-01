@@ -1,6 +1,5 @@
 var user = /** @class */ (function () {
-    function user(userName, email, password) {
-        this.userName = userName;
+    function user(email, password) {
         this.email = email;
         this.password = password;
         this.Email = email;
@@ -9,8 +8,7 @@ var user = /** @class */ (function () {
     return user;
 }());
 var User = /** @class */ (function () {
-    function User(userName, email, password) {
-        this.userName = userName;
+    function User(email, password) {
         this.email = email;
         this.password = password;
     }
